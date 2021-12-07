@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import hello from '@/plugins/hello'
+import horror from '@/plugins/horror'
 
 createApp(App)
-  .use(hello)
+  .use(horror)
   .mount('#app')
