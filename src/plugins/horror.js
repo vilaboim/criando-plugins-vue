@@ -24,9 +24,18 @@ const movies = [
 
 export default {
   install: (app) => {
-    app.config.globalProperties.$horror = {
-      directors,
-      movies
+    function getRandomDirector (key = '') {
+      const director = directors[Math.floor(Math.random() * directors.length)]
+
+        return !key ? director : director[key]
     }
+
+    const horror = {
+      directors,
+      movies,
+      getRandomDirector
+    }
+
+    app.config.globalProperties.$horror = horror
   }
 }

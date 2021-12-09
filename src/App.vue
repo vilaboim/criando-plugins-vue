@@ -1,4 +1,7 @@
 <template>
+  <h1>{{$horror.getRandomDirector('name')}}</h1>
+
+
   <ul>
     <li v-for="director in $horror.directors" :key="director.id">
       {{director.name}}
