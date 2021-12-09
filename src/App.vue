@@ -1,17 +1,25 @@
 <template>
-  <h1>{{$horror.getRandomDirector('name')}}</h1>
-
-
+  <h1>{{getRandomDirector('name')}}</h1>
   <ul>
-    <li v-for="director in $horror.directors" :key="director.id">
+    <li v-for="director in directors" :key="director.id">
       {{director.name}}
     </li>
   </ul>
 </template>
 
 <script>
+import { inject } from 'vue'
+
 export default {
   name: 'App',
+  setup() {
+    const { directors, getRandomDirector } = inject('$horror')
+
+    return {
+      directors,
+      getRandomDirector
+    }
+  }
 }
 </script>
 

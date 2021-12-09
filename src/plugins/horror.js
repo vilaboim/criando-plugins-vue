@@ -37,5 +37,6 @@ export default {
     }
 
     app.config.globalProperties.$horror = horror
+    app.provide('$horror', horror)
   }
 }
