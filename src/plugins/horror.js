@@ -24,19 +24,30 @@ const movies = [
 
 export default {
   install: (app) => {
-    function getRandomDirector (key = '') {
-      const director = directors[Math.floor(Math.random() * directors.length)]
+    function getRandomList (key = '', type) {
+      const listTypes = {
+        movie: movies,
+        director: directors
+      }
 
-        return !key ? director : director[key]
+      const item = listTypes[type][Math.floor(Math.random() * listTypes[type].length)]
+
+      return !key ? item : item[key]
     }
 
     const horror = {
       directors,
       movies,
-      getRandomDirector
+      getRandomList
     }
 
     app.config.globalProperties.$horror = horror
     app.provide('$horror', horror)
+
+    app.directive('horror', {
+      beforeMount(el, binding) {
+        el.textContent = getRandomList('name', binding.value)
+      }
+    })
   }
 }

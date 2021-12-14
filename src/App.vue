@@ -1,5 +1,6 @@
 <template>
-  <h1>{{getRandomDirector('name')}}</h1>
+  <h1 v-horror />
+
   <ul>
     <li v-for="director in directors" :key="director.id">
       {{director.name}}
@@ -13,11 +14,10 @@ import { inject } from 'vue'
 export default {
   name: 'App',
   setup() {
-    const { directors, getRandomDirector } = inject('$horror')
+    const { directors } = inject('$horror')
 
     return {
-      directors,
-      getRandomDirector
+      directors
     }
   }
 }
